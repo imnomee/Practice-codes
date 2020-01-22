@@ -42,3 +42,31 @@ cosnt square = (x)=> {
 const cube = (x) => {
     return square(x) * x;
 }
+
+
+//03 MULTIPLE ARGUMENTS
+//Normal Syntax
+function multiply(x, y) {
+    return x * y;
+}
+
+function add(a, b) {
+    return a + b;
+}
+
+function subtract(a, b) {
+    return a - b;
+}
+
+//Arrow syntax
+const multiply = (x, y) => {
+    return x * y;
+}
+
+const add = (a, b) => {
+    return a + b;
+}
+
+const subtract = (a, b) => {
+    return a - b;
+}
