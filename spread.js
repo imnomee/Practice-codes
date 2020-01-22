@@ -30,7 +30,7 @@ function printTreehouseSummary() {
     console.log(`Treehouse has ${i} JavaScript courses, and ${teachers.length} Javascript teachers`);
 }
 
-let newTeachers = [
+let newTeachersList = [
     {
         name: 'James',
         topicArea: 'Javascript'
@@ -41,7 +41,7 @@ let newTeachers = [
     },
 ];
 
-addNewTeachers(newTeachers);
+addNewTeachers(newTeachersList);
 printTreehouseSummary();
 
 
