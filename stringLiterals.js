@@ -14,7 +14,7 @@ function like(thing) {
   
   //Interpolated sentence
   const sentence = `<p>${like('apples')} but ${love('Mangoes')}.</p>`;
-  document.querySelector('.interpolation').innerHTML = sentence;
+  console.log(sentence);
   
 
   /*MDN link
