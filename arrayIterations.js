@@ -87,3 +87,206 @@ const user30 = usersWithAge
     .filter(user => user.age >= 30) //filter age over 30
     .map(user => user.name); //map to new array only names
 console.log(user30);
+
+///////////// PRACTICE
+const todos = [
+    {
+        todo: "Buy apples",
+        done: false
+    },
+    {
+        todo: "Wash car",
+        done: true
+    },
+    {
+        todo: "Write web app",
+        done: false
+    },
+    {
+        todo: "Read MDN page on JavaScript arrays",
+        done: true
+    },
+    {
+        todo: "Call mom",
+        done: false
+    }
+];
+let unfinishedTasks;
+
+// unfinishedTasks should be: ["Buy apples", "Write web app", "Call mom"]
+// Write your code below
+
+unfinishedTasks = todos.filter(todo => !todo.done).map(todo => todo.todo);
+
+console.log(unfinishedTasks);
+
+//////////
+const products = [
+    { name: "hard drive", price: 59.99 },
+    { name: "lighbulbs", price: 2.59 },
+    { name: "paper towels", price: 6.99 },
+    { name: "flatscreen monitor", price: 159.99 },
+    { name: "cable ties", price: 19.99 },
+    { name: "ballpoint pens", price: 4.49 }
+];
+
+// Result: { name: 'paper towels', price: 6.99 }
+const product = products
+    .filter(product => product.price < 10) //prices under 10
+    .reduce((highest, product) => {
+        if (highest.price > product.price) {
+            //if the highest has high price return that
+            return highest;
+        } else {
+            return product; //if not return product
+        }
+    });
+console.log(product);
+
+const totalOver10 = products
+    .filter(product => product.price > 10) //prices over 10
+    .reduce((sum, product) => sum + product.price, 0) // sume of all the returned prices
+    .toFixed(2); //limit the decimal to 2
+console.log(totalOver10);
+
+///////////PRACTICE
+
+const purchaseItems = [
+    {
+        name: "apples",
+        dept: "groceries",
+        price: 2.49
+    },
+    {
+        name: "bread",
+        dept: "groceries",
+        price: 2.99
+    },
+    {
+        name: "batteries",
+        dept: "electronics",
+        price: 5.8
+    },
+    {
+        name: "eggs",
+        dept: "groceries",
+        price: 3.99
+    },
+    {
+        name: "t-shirts",
+        dept: "apparel",
+        price: 9.99
+    }
+];
+let groceryTotal;
+
+// groceryTotal should be: 9.47
+// Write your code below
+
+groceryTotal = purchaseItems
+    .filter(item => item.dept == "groceries")
+    .reduce((sum, item) => {
+        return sum + item.price;
+    }, 0);
+console.log(groceryTotal);
+/////////////
+
+const movies = [
+    ["The Day the Earth Stood Still", "Superman", "Ghostbusters"],
+    ["Finding Dory"],
+    ["Jaws", "On the Waterfront"]
+];
+
+const flatMovies = movies.reduce(
+    (arr, innerMovie) => [...arr, ...innerMovie],
+    []
+);
+console.log(flatMovies);
+// Result: ['The Day the Earth Stood Still', 'Superman', 'Ghostbusters', 'Finding Dory', 'Jaws', 'On the Waterfront']
+
+//////
+
+const userBooks = [
+    {
+        name: "Samir",
+        age: 27,
+        favoriteBooks: [
+            { title: "The Iliad" },
+            { title: "The Brothers Karamazov" }
+        ]
+    },
+    {
+        name: "Angela",
+        age: 33,
+        favoriteBooks: [
+            { title: "Tenth of December" },
+            { title: "Cloud Atlas" },
+            { title: "One Hundred Years of Solitude" }
+        ]
+    },
+    {
+        name: "Beatrice",
+        age: 42,
+        favoriteBooks: [{ title: "Candide" }]
+    }
+];
+const books = userBooks
+    .map(user => user.favoriteBooks.map(book => book.title))
+    .reduce((arr, innerTitle) => [...arr, ...innerTitle], []);
+
+console.log(books);
+
+////////////Practice
+
+const customerNames = [
+    ["John", "Sandy", "Tyrone", "Elizabeth", "Penny"],
+    ["Barry", "Wanda", "Jamal", "Hayden"],
+    ["Portia", "Pam", "Philip"]
+];
+let flattenedCustomerNames;
+
+flattenedCustomerNames = customerNames.reduce(
+    // setting outer array and inner array
+    (Outerarray, innerArray) => [...Outerarray, ...innerArray],
+    [] // Starting with empty array
+);
+
+console.log(flattenedCustomerNames);
+
+///////////
+
+const customers = [
+    {
+        name: "Tyrone",
+        personal: {
+            age: 33,
+            hobbies: ["Bicycling", "Camping"]
+        }
+    },
+    {
+        name: "Elizabeth",
+        personal: {
+            age: 25,
+            hobbies: ["Guitar", "Reading", "Gardening"]
+        }
+    },
+    {
+        name: "Penny",
+        personal: {
+            age: 36,
+            hobbies: ["Comics", "Chess", "Legos"]
+        }
+    }
+];
+let hobbies;
+
+// hobbies should be: ["Bicycling", "Camping", "Guitar", "Reading", "Gardening", "Comics", "Chess", "Legos"]
+// Write your code below
+
+hobbies = customers
+    .map(customer => customer.personal)
+    .reduce(
+        (outerarray, innerArray) => [...outerarray, ...innerArray.hobbies],
+        []
+    );
+console.log(hobbies);
